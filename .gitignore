@@ -100,8 +100,6 @@ Desktop.ini
 # Logs
 *.log
 logs/
-alerts/logs.txt
-backend/alerts_log.txt
 
 # Model weights
 *.pt
