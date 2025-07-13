@@ -1,0 +1,15 @@
+cd backend
+
+python -m venv venv
+
+.\venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python yolo_detect.py
+
+cd dashboard
+
+streamlit run streamlit_app.py
+
+
