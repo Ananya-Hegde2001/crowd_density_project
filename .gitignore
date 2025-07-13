@@ -103,6 +103,3 @@ logs/
 
 # Model weights
 *.pt
-
-# Video files
-data/videos/*.mp4
