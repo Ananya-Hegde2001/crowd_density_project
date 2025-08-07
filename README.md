@@ -1,15 +1,17 @@
 # Crowd Density Monitoring Flask App
 
-A real-time crowd density monitoring system using YOLOv8 and Flask, converted from the original standalone script.
+A comprehensive real-time crowd density monitoring system using YOLOv8 and Flask, featuring both live camera monitoring and video file analysis.
 
 ## Features
 
-- 🎥 **Real-time Video Streaming**: Live camera feed with crowd detection
-- 📊 **Zone-based Analysis**: 3x3 grid zone monitoring with density levels
+- 🎥 **Real-time Camera Monitoring**: Live camera feed with crowd detection
+- � **Video Upload & Analysis**: Upload and analyze pre-recorded videos
+- �📊 **Zone-based Analysis**: 3x3 grid zone monitoring with density levels
 - 🚨 **Alert System**: Critical zone alerts with sound notifications and logging
-- 🌐 **Web Interface**: Clean, responsive web dashboard
+- 🌐 **Modern Web Interface**: Responsive, mobile-friendly dashboard
 - 📱 **API Endpoints**: RESTful API for integration with other systems
 - ⚙️ **Configurable**: Easy configuration through JSON file
+- 📱 **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 
 ## Installation
 
@@ -44,17 +46,35 @@ flask run --host=0.0.0.0 --port=5000
 
 ## Accessing the Application
 
-1. **Web Interface**: Open your browser and go to `http://localhost:5000`
-2. **API Endpoints**: Available at `http://localhost:5000/api/`
+1. **Main Dashboard**: Open your browser and go to `http://localhost:5000`
+   - Live camera monitoring
+   - Real-time zone analysis
+   - Alert management
+
+2. **Video Upload Page**: Go to `http://localhost:5000/video-upload`
+   - Upload video files for analysis
+   - Drag & drop interface
+   - Supported formats: MP4, AVI, MOV, MKV
+
+3. **API Endpoints**: Available at `http://localhost:5000/api/`
 
 ## Web Interface
 
-The web dashboard provides:
+### 🏠 Live Camera Dashboard
+The main dashboard provides:
 - Live video feed with person detection and zone overlays
 - Real-time zone status grid with color-coded density levels
-- Total person count display
-- Recent alerts panel
-- Control buttons to start/stop detection
+- Total person count and active zone statistics
+- Recent alerts panel with timestamps
+- Control buttons to start/stop camera
+
+### 📁 Video Upload Dashboard
+The video upload page offers:
+- Drag & drop video file upload
+- Video player with analysis controls
+- Real-time processing progress
+- Zone analysis during video playback
+- Support for multiple video formats
 
 ### Zone Density Levels
 - 🟢 **Low** (0-3 people): Safe density
@@ -66,14 +86,17 @@ The web dashboard provides:
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/` | GET | Main web interface |
-| `/video_feed` | GET | Video stream endpoint |
+| `/` | GET | Main live camera dashboard |
+| `/video-upload` | GET | Video upload page |
+| `/video_feed` | GET | Live video stream endpoint |
 | `/api/zones` | GET | Current zone data (JSON) |
 | `/api/alerts` | GET | Recent alerts list |
-| `/api/start` | GET | Start detection system |
-| `/api/stop` | GET | Stop detection system |
+| `/api/start` | GET | Start camera and monitoring |
+| `/api/stop` | GET | Stop camera and monitoring |
 | `/api/config` | GET | Current configuration |
 | `/api/status` | GET | System status |
+| `/api/upload-video` | POST | Upload video file |
+| `/api/process-video` | POST | Process uploaded video |
 
 ## Configuration
 
@@ -131,7 +154,9 @@ backend/
 ├── run_flask.py          # Startup script
 ├── config.json           # Configuration file
 ├── templates/
-│   └── index.html        # Web interface template
+│   ├── index.html        # Live camera dashboard
+│   └── video_upload.html # Video upload page
+├── uploads/              # Uploaded video files directory
 ├── yolov8s.pt           # YOLOv8 model (auto-downloaded)
 ├── alerts_log.txt       # Alert logs (created automatically)
 └── zone_data.json       # Current zone data (created automatically)
