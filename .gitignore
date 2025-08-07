@@ -101,5 +101,3 @@ Desktop.ini
 *.log
 logs/
 
-# Model weights
-*.pt
