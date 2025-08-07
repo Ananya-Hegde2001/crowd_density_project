@@ -9,9 +9,7 @@ import winsound
 model = YOLO("yolov8s.pt")  # You can change to 'yolov8n.pt' or 'yolov8m.pt' if needed
 
 # Open webcam
-#cap = cv2.VideoCapture(1)  # 0 = default webcam
-cap = cv2.VideoCapture("../data/videos/crowd.mp4")
-# Adjust path as needed
+cap = cv2.VideoCapture(1)
 
 # 🛠 Optional: Fix black screen issue by setting resolution
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
@@ -72,7 +70,7 @@ while cap.isOpened():
                 level = "Low"
             elif zone_count <= 6:
                 level = "Medium"
-            elif zone_count <= 10:
+            elif zone_count <= 8:
                 level = "High"
             else:
                 level = "Critical"
